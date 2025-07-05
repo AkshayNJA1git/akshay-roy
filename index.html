@@ -63,6 +63,9 @@
             </div>
         </header>
 
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
         <!-- intro -->
         <section id="intro" class="s-intro target-section">
             <div class="row s-intro__content width-sixteen-col">
@@ -491,5 +494,48 @@
     <!-- JavaScript -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.s-header__menu-toggle');
+            const nav = document.querySelector('.s-header__nav');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const navLinks = document.querySelectorAll('.s-header__menu-links a');
+
+            // Toggle mobile menu
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                overlay.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Close menu when clicking overlay
+            overlay.addEventListener('click', function() {
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+
+            // Close menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+
+            // Close menu on window resize (if switching to desktop)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

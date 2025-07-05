@@ -5006,6 +5006,17 @@ td:last-child {
 
 /* Mobile Navigation Styles */
 @media (max-width: 768px) {
+  /* Move logo down on mobile */
+  .s-header__logo {
+    margin-top: 2rem;
+  }
+
+  .s-header__logo .logo img {
+    height: 11.2rem;
+    margin-top: 0;
+    margin-left: -2rem;
+  }
+
   .s-header__nav {
     position: fixed;
     top: 0;
@@ -5062,6 +5073,7 @@ td:last-child {
     font-size: 1.5rem;
     cursor: pointer;
     padding: 10px;
+    margin-top: 2rem;
   }
 
   .s-header__menu-toggle span {
